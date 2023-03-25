@@ -1,0 +1,85 @@
+.control {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 40%;
+  width: 40%;
+  background-color: #3f3f3f;
+  border-radius: 200px;
+  border: 1rem solid #15263F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control h2 {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: 100;
+  border: .25rem double #8a8a8a;
+  border-radius: inherit;
+  height: 95%;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  animation: blinker 1.25s infinite;
+  overflow: hidden;
+}
+
+.control .game {
+  animation: none;
+  position: relative;
+}
+
+.round__wrap {
+  height: 200%;
+  transform: translateY(-25%);
+}
+
+.round__count {
+  padding: inherit;
+  display: flex;
+  align-items: center;
+  height: 50%;
+}
+
+/*.down {
+  transform: translateY(25%);
+  transition: 1s;
+}*/
+
+@keyframes blinker {
+  50% {
+    color: transparent;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .control {
+    border: .6rem solid #15263F;
+  }
+  .control h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .control {
+    border: .5rem solid #15263F;
+  }
+  .control h2 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .control {
+    border: .3rem solid #15263F;
+  }
+  .control h2 {
+    font-size: 1.5rem;
+  }
+}

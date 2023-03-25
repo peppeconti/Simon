@@ -1,0 +1,26 @@
+.board {
+    height: 450px;
+    width: 450px;
+    border-radius: 600px;
+    display: grid;
+    padding: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    caret-color: transparent;
+    position: relative;
+}
+
+@media screen and (max-width: 500px) {
+    .board {
+        max-width: 90vw;
+        max-height: 90vw;
+        min-height: auto;
+        min-width: auto;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .board {
+        min-height: 200px;
+        min-width: 200px;
+    }
+}
