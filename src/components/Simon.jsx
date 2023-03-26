@@ -16,7 +16,7 @@ const Simon = () => {
   return (
     <div className='board'>
       {GameButtons.current.map((e, i) => <GameButton controls={e.controls} key={e.id} id={i} color={e.color} border={e.border} audio={e.audio} player={state.player} checkSequence={checkSequence} />)}
-      <Control start={start} round={state.round} controls={roundControls} />
+      <Control start={start} round={state.round} controls={roundControls} loading={state.loading} />
       {state.gameOver && <Modal round={state.round} dispatch={dispatch} />}
     </div>
   );

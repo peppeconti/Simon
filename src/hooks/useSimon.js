@@ -7,7 +7,8 @@ const initialState = {
     round: 0,
     sequence: [],
     player: false,
-    gameOver: false
+    gameOver: false,
+    loading: true
 };
 
 const reducer = (state, action) => {
@@ -18,6 +19,8 @@ const reducer = (state, action) => {
             return { ...state, player: !state.player };
         case 'game-over':
             return { ...state, gameOver: true, player: false };
+        case 'loaded':
+            return { ...state, loading: false };
         case 'reset':
             return initialState;
         default:
@@ -76,7 +79,12 @@ const useSimon = () => {
             error: [1936, 662],
             slide: [2598, 772]
         },
-        onload: () => console.log('loaded audio')
+        onload: () => {
+            setTimeout(() => {
+                dispatch({ type: 'loaded' });
+                console.log('loaded');
+            }, 2000)
+        }
     }));
 
     // BUTTON ANIMATION
