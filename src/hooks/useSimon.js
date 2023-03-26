@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useId, useRef, useCallback } from 'react';
+import { useEffect, useReducer, useId, useRef, useCallback, useState } from 'react';
 import { useAnimationControls } from 'framer-motion';
 import { Howl } from 'howler';
 import sounds from '../audio/sounds_effect.mp3';
@@ -7,8 +7,7 @@ const initialState = {
     round: 0,
     sequence: [],
     player: false,
-    gameOver: false,
-    loading: true
+    gameOver: false
 };
 
 const reducer = (state, action) => {
@@ -19,8 +18,6 @@ const reducer = (state, action) => {
             return { ...state, player: !state.player };
         case 'game-over':
             return { ...state, gameOver: true, player: false };
-        case 'loaded':
-            return { ...state, loading: false };
         case 'reset':
             return initialState;
         default:
@@ -64,6 +61,7 @@ const useSimon = () => {
     const sequenceRef = useRef();
 
     const [state, dispatch] = useReducer(reducer, initialState);
+    const [loading, setLoading] = useState(true);
 
     // CONTROS FOR THE ROUND COUNT
     const roundControls = useAnimationControls();
@@ -86,12 +84,12 @@ const useSimon = () => {
             },
             onload: () => {
                 setTimeout(() => {
-                    dispatch({ type: 'loaded' });
+                    setLoading(false);
                     console.log('loaded');
                 }, 2000)
             }
         });
-    }, [])
+    }, [loading])
 
     // BUTTON ANIMATION
     const animateButton = useCallback(async (el) => {
@@ -161,7 +159,7 @@ const useSimon = () => {
 
     }, [state.sequence, animateButton]);
 
-    return { state, dispatch, checkSequence, roundControls, GameButtons };
+    return { state, dispatch, checkSequence, roundControls, GameButtons, loading };
 }
 
 export default useSimon;

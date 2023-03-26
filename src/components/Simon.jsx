@@ -7,7 +7,7 @@ import './Simon.css';
 
 const Simon = () => {
 
-  const { state, dispatch, checkSequence, roundControls, GameButtons } = useSimon();
+  const { state, dispatch, checkSequence, roundControls, GameButtons, loading } = useSimon();
 
   const start = () => {
     dispatch({ type: 'new-round', element: Math.floor(Math.random() * 4) });
@@ -16,7 +16,7 @@ const Simon = () => {
   return (
     <div className='board'>
       {GameButtons.current.map((e, i) => <GameButton controls={e.controls} key={e.id} id={i} color={e.color} border={e.border} audio={e.audio} player={state.player} checkSequence={checkSequence} />)}
-      <Control start={start} round={state.round} controls={roundControls} loading={state.loading} />
+      <Control start={start} round={state.round} controls={roundControls} loading={loading} />
       {state.gameOver && <Modal round={state.round} dispatch={dispatch} />}
     </div>
   );
