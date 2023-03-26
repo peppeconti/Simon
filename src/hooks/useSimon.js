@@ -69,23 +69,29 @@ const useSimon = () => {
     const roundControls = useAnimationControls();
 
     // SOUNDS
-    const soundEffects = useRef(new Howl({
-        src: [sounds],
-        sprite: {
-            red: [0, 513],
-            blue: [513, 461],
-            green: [974, 516],
-            yellow: [1490, 446],
-            error: [1936, 662],
-            slide: [2598, 772]
-        },
-        onload: () => {
-            setTimeout(() => {
-                dispatch({ type: 'loaded' });
-                console.log('loaded');
-            }, 2000)
-        }
-    }));
+
+    const soundEffects = useRef();
+
+    useEffect(() => {
+        soundEffects.current = new Howl({
+            src: [sounds],
+            autoplay: false,
+            sprite: {
+                red: [0, 513],
+                blue: [513, 461],
+                green: [974, 516],
+                yellow: [1490, 446],
+                error: [1936, 662],
+                slide: [2598, 772]
+            },
+            onload: () => {
+                setTimeout(() => {
+                    dispatch({ type: 'loaded' });
+                    console.log('loaded');
+                }, 2000)
+            }
+        });
+    }, [])
 
     // BUTTON ANIMATION
     const animateButton = useCallback(async (el) => {
