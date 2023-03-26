@@ -1,6 +1,8 @@
 import { useEffect, useReducer, useId, useRef, useCallback } from 'react';
 import { useAnimationControls } from 'framer-motion';
-import { audio_files } from '../audio/audio';
+import { Howl } from 'howler';
+import sounds from '../audio/sounds_effect.mp3';
+//import { audio_files } from '../audio/audio';
 
 const initialState = {
     round: 0,
@@ -31,28 +33,28 @@ const useSimon = () => {
             color: '#ff0000',
             border: 'TL',
             id: useId(),
-            audio: new Audio(audio_files[0]),
+            audio: 'green',
             controls: useAnimationControls()
         },
         {
             color: '#297fb8',
             border: 'TR',
             id: useId(),
-            audio: new Audio(audio_files[1]),
+            audio: 'red',
             controls: useAnimationControls()
         },
         {
             color: '#27ae61',
             border: 'BL',
             id: useId(),
-            audio: new Audio(audio_files[2]),
+            audio: 'blue',
             controls: useAnimationControls()
         },
         {
             color: '#f1c40f',
             border: 'BR',
             id: useId(),
-            audio: new Audio(audio_files[3]),
+            audio: 'yellow',
             controls: useAnimationControls()
         }
     ]);
@@ -61,17 +63,30 @@ const useSimon = () => {
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const round__controls = useAnimationControls();
+    const roundControls = useAnimationControls();
+
+    const soundEffects = useRef(new Howl({
+        src: [sounds],
+        sprite: {
+            green: [0, 513],
+            red: [513, 461],
+            blue: [974, 516],
+            yellow: [1490, 446],
+            error: [1936, 662],
+            slide: [2598, 772]
+        },
+        onload: () => console.log('loaded audio')
+    }));
 
     // SOUNDS
-    const slide_sound = new Audio(audio_files[5]);
-    const error_sound = new Audio(audio_files[4]);
+    //const slide_sound = new Audio(audio_files[5]);
+    //const error_sound = new Audio(audio_files[4]);
 
     const animateButton = useCallback(async (el) => {
         GameButtons.current[el].controls.set({
             opacity: .5, scale: .9
         })
-        GameButtons.current[el].audio.play();
+        soundEffects.current.play(GameButtons.current[el].audio);
         GameButtons.current[el].controls.start({
             opacity: 1, scale: 1
         })
@@ -83,27 +98,27 @@ const useSimon = () => {
             if (sequenceEl === sequenceRef.current[0]) {
 
                 if (sequenceRef.current.length === 1) {
-                    audio.play();
+                    soundEffects.current.play(audio);
                     dispatch({ type: 'switch-player' });
                     setTimeout(async () => {
                         //setSlide('round__wrap down');
-                        slide_sound.play();
-                        await round__controls.start({
+                        soundEffects.current.play('slide');
+                        await roundControls.start({
                             y: '25%',
                             transition: { duration: 1 }
                         });
-                        round__controls.set({
+                        roundControls.set({
                             y: '-25%',
                         });
                         dispatch({ type: 'new-round', element: Math.floor(Math.random() * 4) });
                     }, 700);
                 } else {
-                    audio.play();
+                    soundEffects.current.play(audio);
                     sequenceRef.current.shift();
                 }
 
             } else {
-                error_sound.play();
+                soundEffects.current.play('error');
                 dispatch({ type: 'game-over' });
             }
 
@@ -134,7 +149,7 @@ const useSimon = () => {
 
     }, [state.sequence, animateButton]);
 
-    return { state, dispatch, checkSequence, round__controls, GameButtons };
+    return { state, dispatch, checkSequence, roundControls, GameButtons };
 }
 
 export default useSimon;
