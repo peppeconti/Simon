@@ -2,7 +2,6 @@ import { useEffect, useReducer, useId, useRef, useCallback } from 'react';
 import { useAnimationControls } from 'framer-motion';
 import { Howl } from 'howler';
 import sounds from '../audio/sounds_effect.mp3';
-//import { audio_files } from '../audio/audio';
 
 const initialState = {
     round: 0,
@@ -33,21 +32,21 @@ const useSimon = () => {
             color: '#ff0000',
             border: 'TL',
             id: useId(),
-            audio: 'green',
+            audio: 'red',
             controls: useAnimationControls()
         },
         {
             color: '#297fb8',
             border: 'TR',
             id: useId(),
-            audio: 'red',
+            audio: 'blue',
             controls: useAnimationControls()
         },
         {
             color: '#27ae61',
             border: 'BL',
             id: useId(),
-            audio: 'blue',
+            audio: 'green',
             controls: useAnimationControls()
         },
         {
@@ -70,9 +69,9 @@ const useSimon = () => {
     const soundEffects = useRef(new Howl({
         src: [sounds],
         sprite: {
-            green: [0, 513],
-            red: [513, 461],
-            blue: [974, 516],
+            red: [0, 513],
+            blue: [513, 461],
+            green: [974, 516],
             yellow: [1490, 446],
             error: [1936, 662],
             slide: [2598, 772]
