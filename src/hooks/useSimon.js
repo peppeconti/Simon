@@ -63,8 +63,10 @@ const useSimon = () => {
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
+    // CONTROS FOR THE ROUND COUNT
     const roundControls = useAnimationControls();
 
+    // SOUNDS
     const soundEffects = useRef(new Howl({
         src: [sounds],
         sprite: {
@@ -78,10 +80,7 @@ const useSimon = () => {
         onload: () => console.log('loaded audio')
     }));
 
-    // SOUNDS
-    //const slide_sound = new Audio(audio_files[5]);
-    //const error_sound = new Audio(audio_files[4]);
-
+    // BUTTON ANIMATION
     const animateButton = useCallback(async (el) => {
         GameButtons.current[el].controls.set({
             opacity: .5, scale: .9
