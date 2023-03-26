@@ -2,7 +2,7 @@ import React from 'react';
 import GameButton from './GameButton';
 import Control from './Control';
 import Modal from './Modal';
-import useSimon from '../hook/useSimon';
+import useSimon from '../hooks/useSimon';
 import './Simon.css';
 
 const Simon = () => {

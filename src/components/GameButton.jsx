@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion as m } from 'framer-motion';
-import { useMediaQuery } from '../hook/useMediaQuery';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import './GameButton.css';
 
 const GameButton = ({ border, color, controls, audio, player, checkSequence, id}) => {
