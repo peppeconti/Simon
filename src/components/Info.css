@@ -1,6 +1,6 @@
 .info {
-    position: absolute;
-    top: 1.5rem;
+    position: fixed;
+    bottom: 1.5rem;
     right: 1.5rem;
     height: 65px;
     width: 65px;
