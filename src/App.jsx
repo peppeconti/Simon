@@ -1,12 +1,12 @@
 import Simon from './components/Simon';
-import Info from './components/Info';
+import InfoButton from './components/InfoButton';
 import './App.css';
 
 function App() {
   return (
     <div className='App'>
       <Simon />
-      <Info />
+      <InfoButton />
     </div>
   );
 }

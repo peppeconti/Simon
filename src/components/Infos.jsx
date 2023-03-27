@@ -60,15 +60,15 @@ const Message = ({ round }) => {
 
 const portalElement = document.getElementById('overlays');
 
-const Modal = ({ round, dispatch, loading }) => {
+const Infos = ({ round, dispatch, loading }) => {
 
     return (
         <>
-            {ReactDOM.createPortal(<Backdrop loading={loading} />, portalElement)}
+            {ReactDOM.createPortal(<Backdrop />, portalElement)}
             {!loading && ReactDOM.createPortal(<Message round={round} />, portalElement)}
             {!loading && ReactDOM.createPortal(<ResetButton dispatch={dispatch} />, portalElement)}
         </>
     );
 };
 
-export default Modal;
+export default Infos;
