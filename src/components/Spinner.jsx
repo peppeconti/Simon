@@ -3,10 +3,8 @@ import './Spinner.css';
 const Spinner = () => {
 
     return (
-        <div className="lds-ripple">
-            <div></div>
-            <div></div>
-            <div></div>
+        <div class="lds-spinner">
+            {[...Array(12)].map(_ => <div/>)}
         </div>
     );
 }
