@@ -4,3 +4,11 @@
   font-size: 100%;
   font-family: 'Odibee Sans', cursive;
 }
+
+body, html {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
