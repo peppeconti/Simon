@@ -1,8 +1,7 @@
 import './Control.css';
 import { motion as m } from 'framer-motion';
-import Spinner from './Spinner';
 
-const Control = ({ start, round, controls, loading }) => {
+const Control = ({ start, round, controls }) => {
 
   const startHandler = () => {
     start();
@@ -10,9 +9,7 @@ const Control = ({ start, round, controls, loading }) => {
 
   let button;
 
-  if (loading) {
-    button = <Spinner />
-  } else if (round === 0) {
+  if (round === 0) {
     button = <h2 className='start' onClick={startHandler}>START</h2>
   } else if (round !== 0) {
     button = <h2 className='game'>Round&#160;

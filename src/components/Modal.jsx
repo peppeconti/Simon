@@ -3,17 +3,18 @@ import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faReplyAll } from '@fortawesome/free-solid-svg-icons'
 import { motion as m } from 'framer-motion';
+import Spinner from './Spinner';
 import './Modal.css';
 
-const Backdrop = () => {
+const Backdrop = ({ loading }) => {
     return (
-        <m.div
-            className='back'
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5, delay: .5 }}
-
-        />
+        <>
+            {!loading && <m.div className='back' initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.5, delay: .5 }} />}
+            {loading && <div className='back loading'>
+                <Spinner />
+            </div>
+            }
+        </>
     );
 };
 
@@ -55,13 +56,13 @@ const Message = ({ round }) => {
 
 const portalElement = document.getElementById('overlays');
 
-const Modal = ({ round, dispatch }) => {
+const Modal = ({ round, dispatch, loading }) => {
 
     return (
         <>
-            {ReactDOM.createPortal(<Backdrop />, portalElement)}
-            {ReactDOM.createPortal(<Message round={round} />, portalElement)}
-            {ReactDOM.createPortal(<ResetButton dispatch={dispatch} />, portalElement)}
+            {ReactDOM.createPortal(<Backdrop loading={loading} />, portalElement)}
+            {!loading && ReactDOM.createPortal(<Message round={round} />, portalElement)}
+            {!loading && ReactDOM.createPortal(<ResetButton dispatch={dispatch} />, portalElement)}
         </>
     );
 };

@@ -11,6 +11,10 @@
     background-color: rgba(56, 56, 56, 0.3);
 }
 
+.loading {
+    background-color: #15263F;
+}
+
 .message {
     position: fixed;
     z-index: 20;
