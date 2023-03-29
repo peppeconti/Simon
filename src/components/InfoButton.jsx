@@ -1,10 +1,14 @@
 import './InfoButton.css';
 
-const Info = () => {
+const InfoButton = ({ setInfos }) => {
+
+    const toggleInfos = () => {
+        setInfos((prev) => !prev )
+    }  
 
     return (
-        <button className="info">?</button>
+        <button className="info" onClick={toggleInfos}>?</button>
     );
 }
 
-export default Info;
+export default InfoButton;
