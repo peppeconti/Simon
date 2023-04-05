@@ -13,14 +13,18 @@ function App() {
   const height = useRef();
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
+    const cc = () => {
       if (mobile) {
         height.current = `${window.innerHeight}px`;
       } else {
         height.current = "100vh";
       }
+    };
+    window.addEventListener("resize", () => {
+      cc()
     });
-    //return () => window.removeEventListener("resize")
+    cc();
+    return () => window.removeEventListener("resize", cc)
   });
 
   const AppHeight = {
