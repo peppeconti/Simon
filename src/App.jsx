@@ -19,7 +19,7 @@ function App() {
   }
 
   const AppHeight = {
-    minHeight: height,
+    height: height,
   };
 
   return (
