@@ -25,7 +25,7 @@ function App() {
     });
     cc();
     return () => window.removeEventListener("resize", cc)
-  });
+  }, [mobile]);
 
   const AppHeight = {
     height: height.current,
