@@ -13,7 +13,7 @@ function App() {
   let height;
 
   if (mobile) {
-    height = `${window.outerHeight}px`;
+    height = `${window.innerHeight}px`;
   } else {
     height = "100vh";
   }
