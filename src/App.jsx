@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Simon from "./components/Simon";
 import InfoButton from "./components/InfoButton";
 import Infos from "./components/Infos";
@@ -10,16 +10,21 @@ function App() {
 
   const mobile = useMediaQuery("(max-width: 1024px)");
 
-  let height;
+  const height = useRef();
 
-  if (mobile) {
-    height = `${window.innerHeight}px`;
-  } else {
-    height = "100vh";
-  }
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      if (mobile) {
+        height.current = `${window.innerHeight}px`;
+      } else {
+        height.current = "100vh";
+      }
+    });
+    //return () => window.removeEventListener("resize")
+  });
 
   const AppHeight = {
-    height: height,
+    height: height.current,
   };
 
   return (
