@@ -10,7 +10,7 @@ function App() {
   const header = useRef();
 
   const setHeight = () => {
-    header.current.style.minHeight = window.innerHeight + "px";
+    header.current.style.height = window.innerHeight + "px";
   };
 
   useEffect(() => {
