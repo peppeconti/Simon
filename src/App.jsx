@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Simon from "./components/Simon";
 import InfoButton from "./components/InfoButton";
 import Infos from "./components/Infos";
@@ -7,32 +7,8 @@ import "./App.css";
 function App() {
   const [infos, setInfos] = useState(false);
 
-  const header = useRef();
-
-  /*const setHeight = () => {
-    header.current.style.height = window.innerHeight + "px";
-  };
-
-  useEffect(() => {
-    let deviceWidth = window.matchMedia("(max-width: 1024px)");
-
-    if (deviceWidth.matches) {
-      window.addEventListener("resize", setHeight);
-      setHeight();
-    }
-  }, []);*/
-
-  const documentHeight = () => {
-    header.current.style.setProperty("--doc-height", `${window.innerHeight}px`);
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", documentHeight);
-    documentHeight();
-  }, []);
-
   return (
-    <div ref={header} className="App">
+    <div className="App">
       <Simon />
       {infos && <Infos setInfos={setInfos} />}
       <InfoButton setInfos={setInfos} />
