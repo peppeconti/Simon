@@ -9,7 +9,7 @@ function App() {
 
   const header = useRef();
 
-  const setHeight = () => {
+  /*const setHeight = () => {
     header.current.style.height = window.innerHeight + "px";
   };
 
@@ -20,7 +20,7 @@ function App() {
       window.addEventListener("resize", setHeight);
       setHeight();
     }
-  }, []);
+  }, []);*/
 
   return (
     <div ref={header} className="App">
