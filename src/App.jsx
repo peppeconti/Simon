@@ -2,37 +2,28 @@ import { useState, useEffect, useRef } from "react";
 import Simon from "./components/Simon";
 import InfoButton from "./components/InfoButton";
 import Infos from "./components/Infos";
-import { useMediaQuery } from "./hooks/useMediaQuery";
 import "./App.css";
 
 function App() {
   const [infos, setInfos] = useState(false);
 
-  const mobile = useMediaQuery("(max-width: 1024px)");
+  const header = useRef();
 
-  const height = useRef();
-
-  useEffect(() => {
-    const cc = () => {
-      if (mobile) {
-        height.current = `${window.innerHeight}px`;
-      } else {
-        height.current = "100vh";
-      }
-    };
-    window.addEventListener("resize", () => {
-      cc()
-    });
-    cc();
-    return () => window.removeEventListener("resize", cc)
-  }, [mobile]);
-
-  const AppHeight = {
-    height: height.current,
+  const setHeight = () => {
+    header.current.style.minHeight = window.innerHeight + "px";
   };
 
+  useEffect(() => {
+    let deviceWidth = window.matchMedia("(max-width: 1024px)");
+
+    if (deviceWidth.matches) {
+      window.addEventListener("resize", setHeight);
+      setHeight();
+    }
+  }, []);
+
   return (
-    <div style={AppHeight} className="App">
+    <div ref={header} className="App">
       <Simon />
       {infos && <Infos setInfos={setInfos} />}
       <InfoButton setInfos={setInfos} />
