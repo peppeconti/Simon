@@ -7,7 +7,7 @@ import "./App.css";
 function App() {
   const [infos, setInfos] = useState(false);
 
-  const header = useRef();
+  /*const header = useRef();
 
   /*const setHeight = () => {
     header.current.style.height = window.innerHeight + "px";
@@ -23,7 +23,7 @@ function App() {
   }, []);*/
 
   return (
-    <div ref={header} className="App">
+    <div className="App">
       <Simon />
       {infos && <Infos setInfos={setInfos} />}
       <InfoButton setInfos={setInfos} />
