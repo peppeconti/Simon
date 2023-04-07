@@ -7,11 +7,12 @@ import "./App.css";
 function App() {
 
   const [infos, setInfos] = useState(false);
-  const [mobile, setMobile] = useState(false);
+  const [mobile, setMobile] = useState(true);
 
   const media = window.matchMedia('max-width: 1024px');
 
   useEffect(() => {
+    console.log(media.matches);
     if (!media.matches) setMobile(false);
     if (media.matches) setMobile(true);
   }, [media.matches]);
