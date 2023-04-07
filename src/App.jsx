@@ -7,11 +7,10 @@ import "./App.css";
 
 function App() {
   const [infos, setInfos] = useState(false);
-
-  const [altezza] = useInnerHeight("(max-width: 1024px)");
+  const [innerHeight] = useInnerHeight("(max-width: 1024px)");
 
   return (
-    <div style={altezza} className="App">
+    <div style={innerHeight} className="App">
       <Simon />
       {infos && <Infos setInfos={setInfos} />}
       <InfoButton setInfos={setInfos} />

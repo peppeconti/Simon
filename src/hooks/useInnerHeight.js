@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 const useInnerHeight = (query) => {
-  const [sectionHeight, setSectionHeight] = useState(`${window.innerHeight}px`);
 
+  const [sectionHeight, setSectionHeight] = useState(`${window.innerHeight}px`);
   const mobile = window.matchMedia(query);
 
   useEffect(() => {
@@ -17,11 +17,11 @@ const useInnerHeight = (query) => {
     return () => window.removeEventListener("resize", setHeight);
   }, [mobile.matches]);
 
-  const altezza = {
+  const innerHeight = {
     height: sectionHeight,
   };
 
-  return [altezza];
+  return [innerHeight];
 };
 
 export { useInnerHeight };
