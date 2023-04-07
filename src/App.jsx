@@ -11,13 +11,11 @@ function App() {
   const mobile = window.matchMedia("(max-width: 1024px)");
 
   useEffect(() => {
-    //console.log(media.matches);
-    //if (!media.matches) setMobile(false);
-    //if (media.matches) setMobile(true);
+  
     window.addEventListener("resize", () => {
-      //if (!media.matches) setMobile(false);
-      //if (media.matches) setMobile(true);
+  
       if (mobile.matches) setSectionHeight({height: `${window.innerHeight}px`});
+      
     });
   }, [mobile.matches]);
 
