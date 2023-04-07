@@ -22,7 +22,7 @@ function App() {
   }
 
   return (
-    <div style={altezza} className="App">
+    <div styles={altezza} className="App">
       <Simon />
       {infos && <Infos setInfos={setInfos} />}
       <InfoButton setInfos={setInfos} />
