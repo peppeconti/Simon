@@ -5,7 +5,6 @@ import Infos from "./components/Infos";
 import "./App.css";
 
 function App() {
-
   const [infos, setInfos] = useState(false);
   const [mobile, setMobile] = useState(true);
 
@@ -15,11 +14,16 @@ function App() {
     console.log(media.matches);
     if (!media.matches) setMobile(false);
     if (media.matches) setMobile(true);
+    window.addEventListener("resize", () => {
+      if (!media.matches) setMobile(false);
+      if (media.matches) setMobile(true);
+      alert('ahaha');
+    });
   }, [media.matches]);
 
   const altezza = {
-    height: mobile ?  `${window.innerHeight}px` : '100vh'
-  }
+    height: mobile ? `${window.innerHeight}px` : "100vh",
+  };
 
   return (
     <div style={altezza} className="App">
