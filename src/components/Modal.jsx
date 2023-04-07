@@ -3,18 +3,22 @@ import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faReplyAll } from '@fortawesome/free-solid-svg-icons'
 import { motion as m } from 'framer-motion';
+import { useInnerHeight } from '../hooks/useInnerHeight';
 import Spinner from './Spinner';
 import './Modal.css';
 
 const Backdrop = ({ loading }) => {
+
+    const [innerHeight] = useInnerHeight("(max-width: 1024px)");
+
     return (
         <>
-            {!loading && <m.div className='back'
+            {!loading && <m.div style={innerHeight} className='back'
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.5, delay: .5 }}
             />}
-            {loading && <div className='back loading'>
+            {loading && <div style={innerHeight} className='back loading'>
                 <Spinner />
             </div>
             }
