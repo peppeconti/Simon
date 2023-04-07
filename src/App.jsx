@@ -6,27 +6,23 @@ import "./App.css";
 
 function App() {
   const [infos, setInfos] = useState(false);
-  const [mobile, setMobile] = useState(true);
+  const [sectionHeight, setSectionHeight] = useState({height: `${window.innerHeight}px`});
 
-  const media = window.matchMedia("(max-width: 1024px)");
+  const mobile = window.matchMedia("(max-width: 1024px)");
 
   useEffect(() => {
-    console.log(media.matches);
-    if (!media.matches) setMobile(false);
-    if (media.matches) setMobile(true);
+    //console.log(media.matches);
+    //if (!media.matches) setMobile(false);
+    //if (media.matches) setMobile(true);
     window.addEventListener("resize", () => {
-      if (!media.matches) setMobile(false);
-      if (media.matches) setMobile(true);
-      alert('ahaha');
+      //if (!media.matches) setMobile(false);
+      //if (media.matches) setMobile(true);
+      if (mobile.matches) setSectionHeight({height: `${window.innerHeight}px`});
     });
-  }, [media.matches]);
-
-  const altezza = {
-    height: mobile ? `${window.innerHeight}px` : "100vh",
-  };
+  }, [mobile.matches]);
 
   return (
-    <div style={altezza} className="App">
+    <div style={sectionHeight} className="App">
       <Simon />
       {infos && <Infos setInfos={setInfos} />}
       <InfoButton setInfos={setInfos} />
