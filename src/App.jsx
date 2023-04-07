@@ -9,7 +9,7 @@ function App() {
   const [infos, setInfos] = useState(false);
   const [mobile, setMobile] = useState(true);
 
-  const media = window.matchMedia('max-width: 1024px');
+  const media = window.matchMedia("(max-width: 1024px)");
 
   useEffect(() => {
     console.log(media.matches);
@@ -22,7 +22,7 @@ function App() {
   }
 
   return (
-    <div styles={altezza} className="App">
+    <div style={altezza} className="App">
       <Simon />
       {infos && <Infos setInfos={setInfos} />}
       <InfoButton setInfos={setInfos} />
