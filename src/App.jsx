@@ -11,9 +11,11 @@ function App() {
   const mobile = window.matchMedia("(max-width: 1024px)");
 
   useEffect(() => {
+    alert(`${window.innerHeight}`)
     window.addEventListener("resize", () => {
       if (mobile.matches) {
         setSectionHeight(`${window.innerHeight}px`);
+        alert(`${window.innerHeight}`)
       }
     });
   }, [mobile.matches]);
