@@ -3,7 +3,7 @@
   /*height: var(--app-height);*/
   width: 100%;
   min-height: 500px;
-  min-height: -webkit fill available;
+  min-height: -webkit-fill-available;
   display: flex;
   align-items: center;
   justify-content: center;
