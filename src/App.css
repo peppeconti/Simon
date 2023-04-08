@@ -1,6 +1,6 @@
 .App {
-  height: 100vh;
-  height: var(--app-height);
+  /*height: 100vh;*/
+  /*height: var(--app-height);*/
   width: 100%;
   min-height: 500px;
   top: 0;
