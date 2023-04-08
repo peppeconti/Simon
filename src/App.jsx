@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Simon from "./components/Simon";
 import InfoButton from "./components/InfoButton";
 import Infos from "./components/Infos";
