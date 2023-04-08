@@ -18,7 +18,7 @@ function App() {
     window.addEventListener("resize", appHeight);
     appHeight();
     return () => window.removeEventListener("resize", appHeight)
-  }, []);*/
+  }, []);ss*/
 
   return (
     <div style={innerHeight} className="App">
