@@ -6,17 +6,6 @@ import "./App.css";
 
 function App() {
   const [infos, setInfos] = useState(false);
-/*const app = useRef();
-  
-  useEffect(() => {
-
-    app.current.style.minHeight = window.innerHeight + "px";
-
-    window.addEventListener('resize', () => {
-      app.current.style.minHeight = window.innerHeight + "px";
-    });
-    
-  }, []);*/
 
   return (
     <div className="App">
