@@ -8,8 +8,6 @@ import './Modal.css';
 
 const Backdrop = ({ loading }) => {
 
-    const [innerHeight] = useInnerHeight("(max-width: 1024px)");
-
     return (
         <>
             {!loading && <m.div className='back'
