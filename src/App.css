@@ -3,9 +3,11 @@
   height: var(--app-height);
   width: 100%;
   min-height: 500px;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #15263F;
-  position: relative;
+  position: fixed;
 }
