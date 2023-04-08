@@ -1,7 +1,8 @@
 .App {
   height: 100vh;
+  height: var(--app-height);
   width: 100%;
-  min-height: 600px;
+  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
