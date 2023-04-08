@@ -14,7 +14,7 @@
 }
 
 .control h2 {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   color: #fff;
   font-weight: 100;
   border: .25rem double #8a8a8a;
@@ -27,6 +27,7 @@
   cursor: pointer;
   animation: blinker 1.25s infinite;
   overflow: hidden;
+  z-index: -1!important;
 }
 
 .control .game {
@@ -62,7 +63,7 @@
     border: .6rem solid #15263F;
   }
   .control h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 }
 
@@ -71,7 +72,7 @@
     border: .5rem solid #15263F;
   }
   .control h2 {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 }
 
