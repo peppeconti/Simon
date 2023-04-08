@@ -7,21 +7,20 @@ import "./App.css";
 
 function App() {
   const [infos, setInfos] = useState(false);
-  //const header = useRef();
-  const [innerHeight] = useInnerHeight("(max-width: 1024px)");
+  const app = useRef();
+  
+  useEffect(() => {
 
-  /*useEffect(() => {
-    const appHeight = () => {
-      header.current.style.setProperty("--app-height", `${window.innerHeight}px`);
-    };
+    app.current.style.minHeight = window.innerHeight + "px";
 
-    window.addEventListener("resize", appHeight);
-    appHeight();
-    return () => window.removeEventListener("resize", appHeight)
-  }, []);ss*/
+    window.addEventListener('resize', () => {
+      app.current.style.minHeight = window.innerHeight + "px";
+    });
+    
+  }, []);
 
   return (
-    <div style={innerHeight} className="App">
+    <div ref={app} className="App">
       <Simon />
       {infos && <Infos setInfos={setInfos} />}
       <InfoButton setInfos={setInfos} />
