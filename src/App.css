@@ -1,6 +1,7 @@
 .App {
   /*height: 100vh;*/
   /*height: var(--app-height);*/
+  height: 100%;
   width: 100%;
   min-height: 500px;
   min-height: -webkit-fill-available;
@@ -8,5 +9,7 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  position: relative;
+  position: absolute;
+  top:0;
+  left: 0;
 }

@@ -6,7 +6,7 @@ import "./App.css";
 
 function App() {
   const [infos, setInfos] = useState(false);
-  const app = useRef();
+/*const app = useRef();
   
   useEffect(() => {
 
@@ -16,10 +16,10 @@ function App() {
       app.current.style.minHeight = window.innerHeight + "px";
     });
     
-  }, []);
+  }, []);*/
 
   return (
-    <div ref={app} className="App">
+    <div className="App">
       <Simon />
       {infos && <Infos setInfos={setInfos} />}
       <InfoButton setInfos={setInfos} />
