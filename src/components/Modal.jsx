@@ -54,7 +54,7 @@ const Message = ({ round }) => {
                 initial={{ y: '30%', scale: .5, opacity: 0 }}
                 animate={{ y: 1, scale: 1, opacity: 1 }}
                 transition={{ duration: .3, ease: 'easeOut', delay: .75 }}
-            >Level completed: {round - 1}</m.p>
+            >Completed levels: {round - 1}</m.p>
         </div>
     );
 };
