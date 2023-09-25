@@ -6,11 +6,14 @@ import { motion as m } from 'framer-motion';
 import Spinner from './Spinner';
 import './Modal.css';
 
-const Backdrop = ({ loading }) => {
+const Backdrop = ({ loading, setInfos }) => {
+
+    const closeInfos = () => setInfos(false);
 
     return (
-        <>
-            {!loading && <m.div className='back'
+        <> 
+            {!loading && setInfos && <div onClick={closeInfos} className='back info__back'/>}
+            {!loading && !setInfos && <m.div className='back'
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.5, delay: .5 }}
@@ -59,15 +62,18 @@ const Message = ({ round }) => {
     );
 };
 
+const Infos = () => <div className='infos'>infos</div>
+
 const portalElement = document.getElementById('overlays');
 
-const Modal = ({ round, dispatch, loading }) => {
+const Modal = ({ round, dispatch, loading, infos, setInfos }) => {
 
     return (
         <>
-            {ReactDOM.createPortal(<Backdrop loading={loading} />, portalElement)}
-            {!loading && ReactDOM.createPortal(<Message round={round} />, portalElement)}
-            {!loading && ReactDOM.createPortal(<ResetButton dispatch={dispatch} />, portalElement)}
+            {ReactDOM.createPortal(<Backdrop loading={loading} setInfos={setInfos} />, portalElement)}
+            {infos && ReactDOM.createPortal(<Infos/>, portalElement)}
+            {!loading && !infos && ReactDOM.createPortal(<Message round={round} />, portalElement)}
+            {!loading && !infos && ReactDOM.createPortal(<ResetButton dispatch={dispatch} />, portalElement)}
         </>
     );
 };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Simon from "./components/Simon";
 import InfoButton from "./components/InfoButton";
-import Infos from "./components/Infos";
+import Modal from "./components/Modal";
 import "./App.css";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Simon />
-      {infos && <Infos setInfos={setInfos} />}
+      {infos && <Modal infos={infos} setInfos={setInfos} />}
       <InfoButton setInfos={setInfos} />
     </div>
   );
